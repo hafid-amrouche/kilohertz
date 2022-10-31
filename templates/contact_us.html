@@ -39,17 +39,17 @@
                     </style>
                 </div>
             </div>
-            <a href="https://goo.gl/maps/jakit68BTzRKWsaX9" class="me-4" style="float: right;"><button class="btn btn-outline-warning">{% trans "Navigate to" %}</button></a>
+            <a href="https://goo.gl/maps/jakit68BTzRKWsaX9" class="me-5" style="float: right;"><button class="btn btn-outline-warning">{% trans "Navigate to" %}</button></a>
         </aside>
-        <div class="col-md-6 col-12 p-3">
-            <h4 class="mb-2">{% trans "Address" %} :</h4>
+        <div class="col-md-6 col-12 mt-4 p-3 px-5">
+            <h4 class="mb-2">{% trans "Address" %}</h4>
             <p class="text-muted mb-4 mt-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mo</p>
-            <h4 class="my-2">{% trans "Phone numbers" %}: </h4>
+            <h4 class="my-2">{% trans "Phone numbers" %}</h4>
             <a href="tel:05415644"><button class="mb-2 mt-0 btn btn-outline-warning">+2135479462</button></a>
             <a href="tel:05415644"><button class="mb-2 mt-0 btn btn-outline-warning">+2135479462</button></a>
             <a href="tel:05415644"><button class="mb-2 mt-0 btn btn-outline-warning">+2135479462</button></a>
             <a href="tel:05415644"><button class="mb-2 mt-0 btn btn-outline-warning">+2135479462</button></a>
-            <h4 class="mb-2 mt-3">{% trans "Email" %} :</h4>
+            <h4 class="mb-2 mt-3">{% trans "Email" %}</h4>
             <a href="mailto:hag@jhdkjd.com"><button class="mb-4 mt-0 btn btn-outline-warning">Lorem@jdjdj.com</button></a>
         </div>
         <div>
@@ -57,7 +57,7 @@
                     <form method="POST" class="col-sm-12 col-md-6"id="contactForm" name="contactForm" action="{% url 'contact-us' %}">
                         {% csrf_token %}
                         <div class="row ">
-                            <h3 class="mb-4 ps-4" >{% trans "Get in touch" %}</h3> 
+                            <h3 class="mb-4 px-4" >{% trans "Get in touch" %}</h3> 
                             {% include 'includes/alerts.html' %}
                             <div class="col-md-12"> 
                                 <div class="form-group">
@@ -76,7 +76,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <input type="submit" value="Send Message" class="btn btn-outline-warning">
+                                    <input type="submit" value="{% trans "Send Message" %}" class="btn btn-outline-warning">
                                     <div class="submitting"></div>
                                 </div>
                             </div>

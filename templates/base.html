@@ -1,5 +1,8 @@
 {% load i18n %}
 {% load static %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,11 +15,22 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    
+        {% if LANGUAGE_CODE == "ar" %}
+            <style>
+                *{
+                    text-align: right;
+                }
+                label{
+                    display: block;
+                }
+            </style>
+        {% endif %}
     </head>
     <body>
         <div id="loadOverlay" style="background-color:white; position:absolute; top:0px; left:0px; width:100%; height:100%; z-index:2000;"></div>
         <div class="navbar-container">
-            <nav class="navbar navbar-expand-sm navbar navbar-light bg-light" aria-label="Third navbar example">
+            <nav class="navbar navbar-expand-md navbar navbar-light bg-light" aria-label="Third navbar example">
                 <div class="container-fluid">
                 <div class="pe-3">
                     <a href="{% url 'home' %}">
@@ -26,36 +40,63 @@
                 <button class="navbar-toggler aligin-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarsExample03">
-                    <ul class="navbar-nav mb-2 mb-sm-0 mt-2">
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="{% url 'home' %}">{% trans "Home" %}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/about-us/' %}active{% endif %}" href="{% url 'about-us' %}" id="about_us">{% trans "About us" %}</a>
-                    </li>
-                    <li>
-                        <a class="nav-link {% if request.path == '/our-services/' %}active{% endif %}" href="{% url 'our-services' %}">{% trans "Our Services" %}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/contact-us/' %}active{% endif %}" href="{% url 'contact-us' %}">{% trans "contact us" %}</a>
-                    </li>
+                <div class="collapse navbar-collapse" id="navbarsExample03" style="align-items: baseline;">
+                    <div>
+                        <form action="{% url 'set_language' %}" method="post" class="m-2 mt-3" onchange="Go.click()" >
+                            {% csrf_token %}
+                            <input name="next" type="hidden" value="">
+                            <select name="language" class="form-select m-auto" style="width: fit-content;">
+                                {% for language in languages %}
+                                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                                        {{ language.name_local }} 
+                                    </option>
+                                {% endfor %}
+                            </select>
+                            <input type="submit" value="Go" id="Go" style="display: none;">
+                        </form>
+                    </div>
+                    <ul class="navbar-nav mb-2 mb-sm-0 mt-2 d-flex" style="">
+                        {% comment %} <li class="nav-item">
+                            <a class="nav-link {% if request.path|slice:"3:" == '/' %}active{% endif %}" aria-current="page" href="{% url 'home' %}">{% trans "Home" %}</a>
+                        </li> {% endcomment %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path|slice:"3:"  == '/about-us/' %}active{% endif %}" href="{% url 'about-us' %}" id="about_us">{% trans "About us" %}</a>
+                        </li>
+                        <li>
+                            <a class="nav-link {% if request.path|slice:"3:"  == '/our-services/' %}active{% endif %}" href="{% url 'our-services' %}">{% trans "Our Services" %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path|slice:"3:"  == '/contact-us/' %}active{% endif %}" href="{% url 'contact-us' %}">{% trans "contact us" %}</a>
+                        </li>
+                        {% if request.session.is_logged %}
+                            <li class="nav-item">
+                                <a class="nav-link {% if request.path|slice:"3:"  == '/messages/' %}active{% endif %}" href="{% url 'messages' %}">{% trans "messages" %}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'logout' %}">{% trans "logout" %}</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link {% if request.path|slice:"3:"  == '/login/' %}active{% endif %}" href="{% url 'login' %}">{% trans "login" %}</a>
+                            </li>
+                        {% endif %}
                     </ul>
+                    
                 </div>
-                <form class="d-flex" id="form_lg">
+                {% comment %} <form class="d-flex" id="form_lg" style="">
                     <input class="form-control me-2" type="search" placeholder="{% trans "Search" %}" aria-label="Search">
                     <button class="btn btn-outline-warning" type="submit">{% trans "Search" %}</button>
-                </form>
+                </form> {% endcomment %}
                 </div>
             </nav>
-            <nav class="navbar navbar-expand-sm navbar navbar-light bg-light" aria-label="Third navbar example" id="form_sm">
+            {% comment %} <nav class="navbar navbar-expand-sm navbar navbar-light bg-light" aria-label="Third navbar example" id="form_sm">
                 <div class="col-12 col-sm-6 m-auto px-3">
                     <form class="d-flex" >
                         <input class="form-control me-2" type="search" placeholder="{% trans "Search" %}" aria-label="Search">
                         <button class="btn btn-outline-warning" type="submit">{% trans "Search" %}</button>
                     </form>
                 </div>
-            </nav>
+            </nav> {% endcomment %}
         </div>
 
 
@@ -69,11 +110,6 @@
             button{
                 background-color: transparent;
                 border: 0;
-            }
-            @media (max-width : 540px){
-                *{
-                    text-align: center;
-                }
             }
             *{
                 font-family: 'Cairo', sans-serif !important;

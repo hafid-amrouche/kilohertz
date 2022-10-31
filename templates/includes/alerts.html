@@ -1,9 +1,9 @@
 {% if messages %}
   <div id="message" class="container">
     {% for message in messages %}
-        <div{% if message.tags %} class="alert alert-{{ message.tags }} mt-3"{% endif %} role="alert">
-          <button type="button" style="float: right; font-size: 28px; top: 0px;" class="close float-left" data-dismiss="alert" onclick="this.parentNode.parentNode.remove()">
-            <span aria-hidden="true">&times</span>
+        <div{% if message.tags %} class="alert alert-{{ message.tags }} mt-3"{% endif %} role="alert" style="text-align: left;">
+          <button type="button" data-dismiss="alert" class="me-2" onclick="this.parentNode.parentNode.remove()">
+            <img src="https://img.icons8.com/ios-filled/50/000000/x.png"/ width="15">
           </button>
           {{ message }}
         </div>

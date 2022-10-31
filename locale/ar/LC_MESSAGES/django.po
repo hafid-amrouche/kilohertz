@@ -1,0 +1,118 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-31 14:17+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\templates\about_us.html:6 .\templates\base.html:64
+#: .\templates\contact_us.html:6 .\templates\our_services.html:6
+msgid "About us"
+msgstr "معلومات عنا"
+
+#: .\templates\about_us.html:24
+msgid "About Us"
+msgstr "معلومات عنا"
+
+#: .\templates\base.html:67
+msgid "Our Services"
+msgstr "خدماتنا"
+
+#: .\templates\base.html:70
+msgid "contact us"
+msgstr "تواصل معنا"
+
+#: .\templates\base.html:74
+msgid "messages"
+msgstr "رسائل"
+
+#: .\templates\base.html:77
+msgid "logout"
+msgstr "خروج"
+
+#: .\templates\base.html:81
+msgid "login"
+msgstr "دخول"
+
+#: .\templates\contact_us.html:42
+msgid "Navigate to"
+msgstr "تعال الينا"
+
+#: .\templates\contact_us.html:45
+msgid "Address"
+msgstr "عنوان"
+
+#: .\templates\contact_us.html:47
+msgid "Phone numbers"
+msgstr "أرقام الهاتف"
+
+#: .\templates\contact_us.html:52 .\templates\contact_us.html:64
+#: .\templates\login.html:11 .\templates\messages.html:13
+msgid "Email"
+msgstr "بريد الكتروني"
+
+#: .\templates\contact_us.html:60
+msgid "Get in touch"
+msgstr "تواصل معنا"
+
+#: .\templates\contact_us.html:69 .\templates\messages.html:14
+msgid "Subject"
+msgstr "الموضوع"
+
+#: .\templates\contact_us.html:74 .\templates\messages.html:15
+msgid "Message"
+msgstr "الرسالة"
+
+#: .\templates\contact_us.html:79
+msgid "Send Message"
+msgstr "ارسال"
+
+#: .\templates\login.html:8
+msgid "Login"
+msgstr "دخول"
+
+#: .\templates\login.html:15
+msgid "Password"
+msgstr "كلمة المرور"
+
+#: .\templates\login.html:18
+msgid "Submit"
+msgstr "تثبيت"
+
+#: .\templates\messages.html:8
+msgid "Messages"
+msgstr "رسالة"
+
+#: .\templates\our_services.html:23
+msgid "Electrical cabinets fabrication"
+msgstr "صناعة الخزانات الكهرابائية"
+
+#: .\templates\our_services.html:74
+msgid "Water treatment"
+msgstr "معالجة المياه"
+
+#: .\templates\our_services.html:105
+msgid "Wastewater treatement station for Sud Etanche LLC"
+msgstr "Sud etanche Sarl محطة تصفية مياه فاسدة لشركة"
+
+#: .\templates\our_services.html:118
+msgid "CNC machines building"
+msgstr "CNCصنع ألة ال"
+
+#: .\templates\our_services.html:139
+msgid "Other Activities"
+msgstr "أعمال أخرى"

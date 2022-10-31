@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+{% include 'includes/alerts.html' %}
+<div class="container mt-3 d-flex" style="flex-wrap: wrap;">
+    <h4 class="p-3 ps-0 col-12">{{ messages_.count }} {% trans "Messages" %}</h4>
+    {% for message in messages_ %}
+        <div class="col-12 col-md-6">
+            <div class="border p-3 m-2">
+                {% if LANGUAGE_CODE == "ar" %}
+                    <span class="text-muted" style="float: left;">{{ message.created_date }}</span>
+                    <div class="p-2 mt-4"><span class="text-muted">{{ message.email }}</span>  : <strong for="">{% trans "Email" %}</strong> </div>
+                    <div class="p-2"><span class="text-muted">{{ message.subject }}</span> : <strong for="">{% trans "Subject" %}</strong> </div>
+                {% else %}
+                    <span class="text-muted" style="float: right;">{{ message.created_date }}</span>
+                    <div class="p-2 mt-4"><strong for="">{% trans "Email" %} :</strong> <span class="text-muted">{{ message.email }}</span></div>
+                    <div class="p-2"><strong for="">{% trans "Subject" %}:</strong> <span class="text-muted">{{ message.subject }}</span></div>
+                {% endif %}
+                <div class="p-2"><strong for="">{% trans "Message" %}</strong></div>
+                <div class="border m-2 p-1">
+                    <p class="p-3 pt-0 text-muted">
+                        {{ message.message }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}
